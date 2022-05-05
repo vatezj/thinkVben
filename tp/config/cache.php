@@ -29,7 +29,7 @@ return [
             // 驱动方式
             'type'       => 'Redis',
             'host'       =>  env('redis.host', '127.0.0.1'),
-            'port'       => 6378,
+            'port'       => env('redis.port', '6379'),
             'password'   =>  env('redis.password', ''),
             'select'     => 0,
             'prefix'     => 'wms:',

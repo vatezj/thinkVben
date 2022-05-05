@@ -39,7 +39,7 @@ export const getMenuList = (params?: any) => defHttp.get<any>({ url: Api.MenuLis
 
 export const MenuAdd = (params?: any) => defHttp.post<any>({ url: Api.MenuAdd, params });
 
-export const MenuDel = (params?: any) => defHttp.post<any>({ url: Api.MenuDel, params });
+export const MenuDel = (data?: any) => defHttp.post<any[]>({ url: Api.MenuDel, data });
 
 export const getDeptList = (params?: any) => defHttp.get<any>({ url: Api.DeptList, params });
 
@@ -75,7 +75,7 @@ export const getListTree = () => defHttp.get<any>({ url: Api.getListTree });
 
 export const DicAdd = (params?: any) => defHttp.post<any[]>({ url: Api.DicAdd, params });
 
-export const DicDel = (params?: any) => defHttp.post<any[]>({ url: Api.DicDel, params });
+export const DicDel = (data?: any) => defHttp.post<any[]>({ url: Api.DicDel, data });
 
 export const DicItem = (params?: any) => defHttp.post<any[]>({ url: Api.DicItem, params });
 

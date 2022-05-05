@@ -2,7 +2,9 @@
   <div>
     <BasicTable @register="registerTable">
       <template #toolbar>
-        <a-button v-if="hasPermission('addMenu')" type="primary" @click="handleCreate"> 新增菜单 </a-button>
+        <a-button v-if="hasPermission('addMenu')" type="primary" @click="handleCreate">
+          新增菜单
+        </a-button>
       </template>
       <template #action="{ record }">
         <TableAction

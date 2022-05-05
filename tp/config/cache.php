@@ -6,7 +6,7 @@
 
 return [
     // 默认缓存驱动
-    'default' => env('cache.driver', 'redis'),
+    'default' => env('cache.driver', 'file'),
 
     // 缓存连接方式配置
     'stores'  => [
@@ -28,9 +28,9 @@ return [
         'redis' => [
             // 驱动方式
             'type'       => 'Redis',
-            'host'       => '127.0.0.1',
+            'host'       =>  env('redis.host', '127.0.0.1'),
             'port'       => 6378,
-            'password'   => '',
+            'password'   =>  env('redis.password', ''),
             'select'     => 0,
             'prefix'     => 'wms:',
             'serialize'  => []

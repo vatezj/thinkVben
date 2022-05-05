@@ -1,39 +1,39 @@
 import { defHttp } from '/@/utils/http/axios';
 
 enum Api {
-  MenuList = '/system.menu/getList',
-  MenuAdd = '/system.menu/add',
-  MenuDel = '/system.menu/del',
-  DeptList = '/system.dept/getList',
-  DeptAdd = '/system.dept/add',
-  DeptDel = '/system.dept/del',
+  MenuList = '/admin.system.menu/getList',
+  MenuAdd = '/admin.system.menu/add',
+  MenuDel = '/admin.system.menu/del',
+  DeptList = '/admin.system.dept/getList',
+  DeptAdd = '/admin.system.dept/add',
+  DeptDel = '/admin.system.dept/del',
 
-  AccountList = '/system.user/getList',
-  AccountAdd = '/system.user/add',
-  AccountDel = '/system.user/del',
-  ChangePassword = '/system.user/changePassword',
+  AccountList = '/admin.system.user/getList',
+  AccountAdd = '/admin.system.user/add',
+  AccountDel = '/admin.system.user/del',
+  ChangePassword = '/admin.system.user/changePassword',
 
-  setRoleStatus = '/system.role/setRoleStatus',
-  RolePageList = '/system.role/getList',
-  RoleAdd = '/system.role/add',
-  RoleDel = '/system.role/del',
-  GetAllRoleList = '/system.role/getListAll',
+  setRoleStatus = '/admin.system.role/setRoleStatus',
+  RolePageList = '/admin.system.role/getList',
+  RoleAdd = '/admin.system.role/add',
+  RoleDel = '/admin.system.role/del',
+  GetAllRoleList = '/admin.system.role/getListAll',
 
-  DicList = '/system.Dictionaries/getList',
-  getListTree = '/system.Dictionaries/getListTree',
-  DicAdd = '/system.Dictionaries/add',
-  DicDel = '/system.Dictionaries/del',
-  DicItem = '/system.Dictionaries/getDic',
+  DicList = '/admin.system.Dictionaries/getList',
+  getListTree = '/admin.system.Dictionaries/getListTree',
+  DicAdd = '/admin.system.Dictionaries/add',
+  DicDel = '/admin.system.Dictionaries/del',
+  DicItem = '/admin.system.Dictionaries/getDic',
 
-  ApiList = '/system.api/getList',
-  ApiAdd = '/system.api/add',
-  ApiDel = '/system.api/del',
+  ApiList = '/admin.system.api/getList',
+  ApiAdd = '/admin.system.api/add',
+  ApiDel = '/admin.system.api/del',
 
-  LogList = '/system.log/getList',
+  LogList = '/admin.system.log/getList',
 
-  NoticeList = '/system.notice/getList',
-  NoticeAdd = '/system.notice/add',
-  NoticeDel = '/system.notice/del',
+  NoticeList = '/admin.system.notice/getList',
+  NoticeAdd = '/admin.system.notice/add',
+  NoticeDel = '/admin.system.notice/del',
 }
 export const getMenuList = (params?: any) => defHttp.get<any>({ url: Api.MenuList, params });
 
@@ -43,9 +43,9 @@ export const MenuDel = (data?: any) => defHttp.post<any[]>({ url: Api.MenuDel, d
 
 export const getDeptList = (params?: any) => defHttp.get<any>({ url: Api.DeptList, params });
 
-export const DeptAdd = (params?: any) => defHttp.post<any[]>({ url: Api.DeptAdd, params });
+export const DeptAdd = (data?: any) => defHttp.post<any[]>({ url: Api.DeptAdd, data });
 
-export const DeptDel = (params?: any) => defHttp.post<any[]>({ url: Api.DeptDel, params });
+export const DeptDel = (data?: any) => defHttp.post<any[]>({ url: Api.DeptDel, data });
 
 export const getAccountList = (params: any) => defHttp.get<any>({ url: Api.AccountList, params });
 
@@ -81,14 +81,14 @@ export const DicItem = (params?: any) => defHttp.post<any[]>({ url: Api.DicItem,
 
 export const ApiList = (params: any) => defHttp.get<any>({ url: Api.ApiList, params });
 
-export const ApiAdd = (params?: any) => defHttp.post<any[]>({ url: Api.ApiAdd, params });
+export const ApiAdd = (data?: any) => defHttp.post<any[]>({ url: Api.ApiAdd, data });
 
-export const ApiDel = (params?: any) => defHttp.post<any[]>({ url: Api.ApiDel, params });
+export const ApiDel = (data?: any) => defHttp.post<any[]>({ url: Api.ApiDel, data });
 
 export const LogList = (params: any) => defHttp.get<any>({ url: Api.LogList, params });
 
 export const NoticeList = (params: any) => defHttp.get<any>({ url: Api.NoticeList, params });
 
-export const NoticeAdd = (params?: any) => defHttp.post<any[]>({ url: Api.NoticeAdd, params });
+export const NoticeAdd = (data?: any) => defHttp.post<any[]>({ url: Api.NoticeAdd, data });
 
-export const NoticeDel = (params?: any) => defHttp.post<any[]>({ url: Api.NoticeDel, params });
+export const NoticeDel = (data?: any) => defHttp.post<any[]>({ url: Api.NoticeDel, data });

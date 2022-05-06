@@ -2,7 +2,7 @@
 
 declare (strict_types=1);
 
-namespace app\controller\Admin;
+namespace app\controller\admin;
 
 use app\service\Auth as AuthService;
 use app\service\User as UserService;

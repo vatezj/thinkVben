@@ -2,7 +2,7 @@
 
 declare (strict_types=1);
 
-namespace app\controller\Admin;
+namespace app\controller\admin;
 
 use app\common\library\storage\Driver as StorageDriver;
 use app\model\Log as Model;

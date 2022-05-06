@@ -2,9 +2,9 @@
 
 declare (strict_types=1);
 
-namespace app\controller\Admin\system;
+namespace app\controller\admin\system;
 
-use app\controller\Admin\Controller;
+use app\controller\admin\Controller;
 use app\model\Dictionaries as Model;
 class Dictionaries extends Controller
 {

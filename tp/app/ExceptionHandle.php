@@ -32,7 +32,7 @@ class ExceptionHandle extends Handle
     public function report(Throwable $exception): void
     {
         // 不使用内置的方式记录异常日志
-         parent::report($exception);
+        parent::report($exception);
     }
 
     /**
@@ -45,24 +45,22 @@ class ExceptionHandle extends Handle
      */
     public function render($request, Throwable $e): Response
     {
-        return $this->renderDebug($e);
-//        if ($e instanceof BaseException) {
-//            $this->code = $e->code;
-//            $this->message = $e->message;
-//            $this->result = $e->result;
-//            $this->type = $e->type;
-//            return $this->renderJson();
-//        }
-//        $this->code = config('status.error');
-//        $this->message = $e->getMessage() ?: '很抱歉，服务器内部错误';
-//        // 如果是debug模式, 输出调试信息
-//        if (is_debug()) {
-////            parent::report($e);
-//            return $this->renderDebug($e);
-//        }
-//        // 将异常写入日志
-//        $this->recordErrorLog($e);
-//        return $this->renderJson();
+        if ($e instanceof BaseException) {
+            $this->code = $e->code;
+            $this->message = $e->message;
+            $this->result = $e->result;
+            $this->type = $e->type;
+            return $this->renderJson();
+        }
+        $this->code = config('status.error');
+        $this->message = $e->getMessage() ?: '很抱歉，服务器内部错误';
+        // 如果是debug模式, 输出调试信息
+        if (is_debug()) {
+            return $this->renderDebug($e);
+        }
+        // 将异常写入日志
+        $this->recordErrorLog($e);
+        return $this->renderJson();
     }
 
     /**

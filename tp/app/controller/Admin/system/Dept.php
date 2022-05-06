@@ -2,11 +2,11 @@
 
 declare (strict_types=1);
 
-namespace app\controller\admin\system;
+namespace app\controller\Admin\system;
 
-use app\controller\admin\Controller;
-use app\model\Log as Model;
-class Log extends Controller
+use app\controller\Admin\Controller;
+use app\model\Dept as Model;
+class Dept extends Controller
 {
     public function initialize()
     {

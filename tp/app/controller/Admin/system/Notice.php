@@ -2,9 +2,9 @@
 
 declare (strict_types=1);
 
-namespace app\controller\admin\system;
+namespace app\controller\Admin\system;
 
-use app\controller\admin\Controller;
+use app\controller\Admin\Controller;
 use app\model\Notice as Model;
 class Notice extends Controller
 {

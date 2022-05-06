@@ -2,7 +2,7 @@
 
 declare (strict_types=1);
 
-namespace app\controller\admin;
+namespace app\controller\Admin;
 
 use app\model\User as UserModel;
 use app\service\User as UserService;

@@ -1,10 +1,10 @@
 {
-  "name": "vben-admin",
+  "name": "thinkvben",
   "version": "2.7.2",
   "author": {
-    "name": "vben",
-    "email": "anncwb@126.com",
-    "url": "https://github.com/anncwb"
+    "name": "thinkvben",
+    "email": "vate96@qq.com",
+    "url": "https://github.com/vatazj"
   },
   "scripts": {
     "bootstrap": "yarn install",

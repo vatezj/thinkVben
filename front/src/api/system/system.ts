@@ -1,39 +1,39 @@
 import { defHttp } from '/@/utils/http/axios';
 
 enum Api {
-  MenuList = '/admin.system.menu/getList',
-  MenuAdd = '/admin.system.menu/add',
-  MenuDel = '/admin.system.menu/del',
-  DeptList = '/admin.system.dept/getList',
-  DeptAdd = '/admin.system.dept/add',
-  DeptDel = '/admin.system.dept/del',
+  MenuList = '/Admin.system.menu/getList',
+  MenuAdd = '/Admin.system.menu/add',
+  MenuDel = '/Admin.system.menu/del',
+  DeptList = '/Admin.system.dept/getList',
+  DeptAdd = '/Admin.system.dept/add',
+  DeptDel = '/Admin.system.dept/del',
 
-  AccountList = '/admin.system.user/getList',
-  AccountAdd = '/admin.system.user/add',
-  AccountDel = '/admin.system.user/del',
-  ChangePassword = '/admin.system.user/changePassword',
+  AccountList = '/Admin.system.user/getList',
+  AccountAdd = '/Admin.system.user/add',
+  AccountDel = '/Admin.system.user/del',
+  ChangePassword = '/Admin.system.user/changePassword',
 
-  setRoleStatus = '/admin.system.role/setRoleStatus',
-  RolePageList = '/admin.system.role/getList',
-  RoleAdd = '/admin.system.role/add',
-  RoleDel = '/admin.system.role/del',
-  GetAllRoleList = '/admin.system.role/getListAll',
+  setRoleStatus = '/Admin.system.role/setRoleStatus',
+  RolePageList = '/Admin.system.role/getList',
+  RoleAdd = '/Admin.system.role/add',
+  RoleDel = '/Admin.system.role/del',
+  GetAllRoleList = '/Admin.system.role/getListAll',
 
-  DicList = '/admin.system.Dictionaries/getList',
-  getListTree = '/admin.system.Dictionaries/getListTree',
-  DicAdd = '/admin.system.Dictionaries/add',
-  DicDel = '/admin.system.Dictionaries/del',
-  DicItem = '/admin.system.Dictionaries/getDic',
+  DicList = '/Admin.system.Dictionaries/getList',
+  getListTree = '/Admin.system.Dictionaries/getListTree',
+  DicAdd = '/Admin.system.Dictionaries/add',
+  DicDel = '/Admin.system.Dictionaries/del',
+  DicItem = '/Admin.system.Dictionaries/getDic',
 
-  ApiList = '/admin.system.api/getList',
-  ApiAdd = '/admin.system.api/add',
-  ApiDel = '/admin.system.api/del',
+  ApiList = '/Admin.system.api/getList',
+  ApiAdd = '/Admin.system.api/add',
+  ApiDel = '/Admin.system.api/del',
 
-  LogList = '/admin.system.log/getList',
+  LogList = '/Admin.system.log/getList',
 
-  NoticeList = '/admin.system.notice/getList',
-  NoticeAdd = '/admin.system.notice/add',
-  NoticeDel = '/admin.system.notice/del',
+  NoticeList = '/Admin.system.notice/getList',
+  NoticeAdd = '/Admin.system.notice/add',
+  NoticeDel = '/Admin.system.notice/del',
 }
 export const getMenuList = (params?: any) => defHttp.get<any>({ url: Api.MenuList, params });
 

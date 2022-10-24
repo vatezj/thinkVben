@@ -7,9 +7,9 @@
   import { defineComponent, ref, computed, unref } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { formSchema } from './dept.data';
+  import { formSchema } from './data';
 
-  import { getDeptList, DeptAdd } from '/@/api/system/system';
+  import { ApiList, ApiAdd } from '/@/api/system/system';
   export default defineComponent({
     name: 'DeptModal',
     components: { BasicModal, BasicForm },
@@ -33,27 +33,26 @@
             ...data.record,
           });
         }
-        const treeData = await getDeptList();
+        const treeData = await ApiList([]);
         treeData.unshift({
-          dept_name: '顶级部门',
-          dept_id: 0,
+          name: '顶级目录',
+          id: 0,
         });
         updateSchema({
-          field: 'parent_id',
+          field: 'pid',
           componentProps: { treeData },
         });
       });
 
-      const getTitle = computed(() => (!unref(isUpdate) ? '新增部门' : '编辑部门'));
+      const getTitle = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
 
       async function handleSubmit() {
         try {
           const values = await validate();
           setModalProps({ confirmLoading: true });
-          // TODO custom api
-          await DeptAdd({ ...values });
+          await ApiAdd({ ...values });
           closeModal();
-          emit('success');
+          emit('success', { isUpdate: unref(isUpdate), values: { ...values } });
         } finally {
           setModalProps({ confirmLoading: false });
         }

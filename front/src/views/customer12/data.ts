@@ -50,21 +50,6 @@ export const formSchema: FormSchema[] = [
     show: false,
   },
   {
-    field: 'pid',
-    label: '上级目录',
-    component: 'TreeSelect',
-    defaultValue: 0,
-    componentProps: {
-      replaceFields: {
-        title: 'name',
-        key: 'id',
-        value: 'id',
-      },
-      getPopupContainer: () => document.body,
-    },
-    required: true,
-  },
-  {
     field: 'name',
     label: 'Api名称',
     component: 'Input',

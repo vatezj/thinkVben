@@ -1,8 +1,10 @@
 <template>
   <div>
-    <BasicTable @register="registerTable">
+    <BasicTable @register="registerTable" @fetch-success="onFetchSuccess">
       <template #toolbar>
-        <a-button v-if="hasPermission('addApi')" type="primary" @click="handleCreate"> 新增Api </a-button>
+        <a-button v-if="hasPermission('addDept')" type="primary" @click="handleCreate">
+          新增客户
+        </a-button>
       </template>
       <template #action="{ record }">
         <TableAction
@@ -10,7 +12,7 @@
             {
               icon: 'clarity:note-edit-line',
               onClick: handleEdit.bind(null, record),
-              auth: 'editApi',
+              auth: 'editDept',
             },
             {
               icon: 'ant-design:delete-outlined',
@@ -19,7 +21,7 @@
                 title: '是否确认删除',
                 confirm: handleDelete.bind(null, record),
               },
-              auth: 'delApi',
+              auth: 'delDept',
             },
           ]"
         />
@@ -29,10 +31,10 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { defineComponent, nextTick } from 'vue';
 
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { ApiList, ApiDel } from '/@/api/system/system';
+  import { getCustomerList, CustomerDel } from '/@/api/customer/customer';
 
   import { useModal } from '/@/components/Modal';
   import FormModal from './FormModal.vue';
@@ -41,29 +43,26 @@
   import { usePermission } from '/@/hooks/web/usePermission';
 
   export default defineComponent({
-    name: 'apiManage',
+    name: 'CustomerManagement',
     components: { BasicTable, FormModal, TableAction },
     setup() {
       const { hasPermission } = usePermission();
-      const showAction = hasPermission('editApi') || hasPermission('delApi');
+      const showAction = hasPermission('editDept') || hasPermission('delDept');
       const [registerModal, { openModal }] = useModal();
-      const [registerTable, { reload, updateTableDataRecord }] = useTable({
-        title: 'API列表',
-        api: ApiList,
-        rowKey: 'id',
+      const [registerTable, { reload, expandAll }] = useTable({
+        title: '客户列表',
+        api: getCustomerList,
         columns,
+        rowKey: 'customer_id',
         formConfig: {
           labelWidth: 120,
           schemas: searchFormSchema,
         },
-        isTreeTable: true,
         pagination: false,
-        striped: false,
         useSearchForm: true,
         showTableSetting: true,
         bordered: true,
         showIndexColumn: false,
-        canResize: false,
         actionColumn: {
           width: 80,
           title: '操作',
@@ -88,20 +87,16 @@
       }
 
       function handleDelete(record: Recordable) {
-        console.log('vates', record.id);
-        ApiDel(record.id).then(() => {
+        CustomerDel({ customer_id: record.customer_id }).then(() => {
           reload();
         });
       }
-      function handleSuccess({ isUpdate, values }) {
-        if (isUpdate) {
-          // 演示不刷新表格直接更新内部数据。
-          // 注意：updateTableDataRecord要求表格的rowKey属性为string并且存在于每一行的record的keys中
-          const result = updateTableDataRecord(values.id, values);
-          console.log(result);
-        } else {
-          reload();
-        }
+
+      function handleSuccess() {
+        reload();
+      }
+      function onFetchSuccess() {
+        nextTick(expandAll);
       }
       return {
         registerTable,
@@ -111,6 +106,7 @@
         handleDelete,
         handleSuccess,
         hasPermission,
+        onFetchSuccess,
       };
     },
   });

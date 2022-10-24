@@ -25,7 +25,7 @@
         />
       </template>
     </BasicTable>
-    <DeptModal @register="registerModal" @success="handleSuccess" />
+    <FormModal @register="registerModal" @success="handleSuccess" />
   </div>
 </template>
 <script lang="ts">
@@ -35,14 +35,14 @@
   import { getDeptList, DeptDel } from '/@/api/system/system';
 
   import { useModal } from '/@/components/Modal';
-  import DeptModal from './DeptModal.vue';
+  import FormModal from './FormModal.vue';
 
-  import { columns, searchFormSchema } from './dept.data';
+  import { columns, searchFormSchema } from './data';
   import { usePermission } from '/@/hooks/web/usePermission';
 
   export default defineComponent({
     name: 'DeptManagement',
-    components: { BasicTable, DeptModal, TableAction },
+    components: { BasicTable, FormModal, TableAction },
     setup() {
       const { hasPermission } = usePermission();
       const showAction = hasPermission('editDept') || hasPermission('delDept');

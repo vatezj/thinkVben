@@ -88,7 +88,8 @@
       }
 
       function handleDelete(record: Recordable) {
-        console.log('vates', record.id);
+        console.log('vates', record);
+        // return;
         ApiDel(record.id).then(() => {
           reload();
         });
